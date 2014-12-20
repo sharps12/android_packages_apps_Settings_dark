@@ -259,14 +259,6 @@
                 android:icon="@drawable/ic_settings_accessibility"
                 />
 
-        <!-- Wakelock blocker -->
-        <dashboard-tile
-                android:id="@+id/wakelock_blocker"
-                android:title="@string/wakelock_blocker"
-	        android:fragment="com.android.settings.WakeLockBlocker"
-                android:icon="@drawable/ic_settings_wakelock_blocker"
-                />
-
         <!-- Print -->
         <dashboard-tile
                 android:id="@+id/print_settings"

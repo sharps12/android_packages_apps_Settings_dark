@@ -18,6 +18,12 @@
         android:title="@string/various_shit_title"
         android:key="various_shit_screen">
 
+    <!-- Wakelock blocker -->
+    <PreferenceScreen
+        android:key="wakelock_blocker"
+        android:fragment="com.android.settings.temasek.WakeLockBlocker"
+        android:title="@string/wakelock_blocker_title" />
+
     <PreferenceScreen
         android:key="lock_clock"
         android:title="@string/lock_clock_title"

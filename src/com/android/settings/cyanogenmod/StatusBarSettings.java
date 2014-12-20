@@ -38,8 +38,6 @@ import com.android.internal.widget.LockPatternUtils;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-//import android.telephony.MSimTelephonyManager;
-import com.android.settings.Utils;
 
 import java.util.Locale;
 
@@ -54,8 +52,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
-    private SwitchPreference mRecentsClearAll;
-    private ListPreference mRecentsClearAllLocation;
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
     private SwitchPreference mBlockOnSecureKeyguard;
