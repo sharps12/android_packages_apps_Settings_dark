@@ -16,6 +16,7 @@
 
 package com.android.settings.aicp;
 
+import android.app.ActionBar;
 import android.app.ActivityManagerNative;
 import android.app.Dialog;
 import android.content.ContentResolver;
@@ -67,6 +68,9 @@ public class Animations extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
 
         addPreferencesFromResource(R.xml.aicp_animations);
+
+        ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setIcon(R.drawable.ic_settings_aicp);
 
 
         PreferenceScreen prefSet = getPreferenceScreen();

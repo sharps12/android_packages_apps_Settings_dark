@@ -3,13 +3,23 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- About phone screen, Temasek version -->
-    <string name="temasek_version_title">LolliGang Version</string>
+    <string name="temasek_version_title">Crazy-Lab Version</string>
     <!-- Do NOT translate this -->
-    <string name="temasek_version_default">Lolligang V-6</string>
+    <string name="temasek_version_default">Crazy-Lab V-9</string>
 
     <!-- Aicp Settings -->
-    <string name="aicp_settings_title">Lolli Mods</string>
+    <string name="aicp_settings_title">CrazyLab</string>
     <string name="recents_title">Recents</string>
+    <string name="performance_settings">Performance</string>
+    <string name="generalUI_title">General UI</string>
+    <string name="multitasking_title">Multi-Tasking</string>
+    <string name="system_title">System</string>
+    <string name="misc_title">Misc. Tweaks</string>
+
+    <!-- Joke -->
+    <string name="hidden_shit_toast">Hidden shit UNLEASHED!!!</string>
+    <string name="hidden_shit_title">Hidden shit</string>
+    <string name="hidden_shit_summary">You are now in unleashed mode!</string>
 
     <!-- Various shit -->
     <string name="various_shit_title">Misc</string>
@@ -34,21 +44,12 @@
     <!-- LockClocK -->
     <string name="lock_clock_title">cLock settings</string>
     <string name="lock_clock_summary">View or change how the \'cLock\' widget will be displayed.</string>
-
-    <!-- App Circle Sidebar -->
-    <string name="app_circle_bar_title">App sidebar</string>
-    <string name="app_circle_sidebar_summary_real">Launch apps faster from a sidebar and open multiple apps on one screen to multitask</string>
-    <string name="app_circle_bar_summary">Show app launcher after touching right side of screen</string>
-    <string name="app_circle_bar_included_apps_title">Included apps</string>
-    <string name="app_circle_bar_included_apps_summary">Apps will show in app sidebar</string>
-
-    <!-- App Circle trigger -->
-    <string name="trigger_width_title">Trigger width</string>
-    <string name="trigger_width_summary">Adjust the width of trigger area</string>
-    <string name="trigger_top_title">Trigger position</string>
-    <string name="trigger_top_summary">Adjust the position of trigger area</string>
-    <string name="trigger_bottom_title">Trigger height</string>
-    <string name="trigger_bottom_summary">Adjust the height of trigger area</string>
+    <string name="lock_clock_clock_section_title">Clock and alarm</string>
+    <string name="lock_clock_clock_section_summary">View or change how the clock of the \'cLock\' Home widget will display</string>
+    <string name="lock_clock_weather_section_title">Weather panel</string>
+    <string name="lock_clock_weather_section_summary">View or change how the weather of the \'cLock\' Home widget will display</string>
+    <string name="lock_clock_calendar_section_title">Calendar events</string>
+    <string name="lock_clock_calendar_section_summary">View or change how the calendar of the \'cLock\' Home widget will display</string>
 
     <!-- Host File Manager -->
     <string name="hfm_disable_ads_title">Disable Ads</string>
@@ -153,6 +154,7 @@
     <string name="performance_settings_warning_header">Warning</string>
 
     <!-- General strings -->
+    <string name="ok">OK</string>
     <string name="attention">Attention</string>
     <string name="reset">Reset</string>
     <string name="add">Add</string>
@@ -161,6 +163,11 @@
     <string name="enabled">Enabled</string>
     <string name="disabled">Disabled</string>
     <string name="reset_message">Reset all entries to default?</string>
+
+    <!-- Dialogs -->
+    <string name="dirtytweaks_dialog_title">Help Us, Help You!!</string>
+    <string name="dirtytweaks_dialog_message">Unfortunately we are not wizards!\n\nSo if you find a bug with any of these settings, please open up a ticket on Jira or contact a DU developer with the following.\n\n1. Logcat or Last_Kmsg\n2. Kernel and Mods used\n3. Useful information\n\nIf you fail to report something, do not expect things to be fixed. Remember, we are not wizards so we do miss things.</string>
+    <string name="dirtytweaks_dialog_toast">READ THE WHOLE THING!</string>
 
     <!-- Sound settings -->
     <string name="advanced_sound_title">Advanced options</string>
@@ -233,6 +240,9 @@
     <string name="network_traffic_autohide">Auto hide</string>
     <string name="network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
     <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
+    <string name="network_traffic_color_style">Color style</string>
+    <string name="network_traffic_color_reset">Reset color</string>
+    <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
 
     <!-- Screenshot sound -->
     <string name="screenshot_sound_title">Screenshot sound</string>
@@ -255,6 +265,8 @@
     <string name="toast_GrowFadeCenter_animation">Grow fade center</string>
     <string name="toast_GrowFadeBottom_animation">Grow fade bottom</string>
     <string name="toast_Translucent_animation">Translucent animation</string>
+    <string name="toast_SlideLeftRight_animation">Slide left to right</string>
+    <string name="toast_SlideRightLeft_animation">Slide right to left</string>
 
     <!-- Text for disabling immersive mode messages -->
     <string name="disable_immersive_message_title">Disable Immersive Mode Messages</string>
@@ -289,7 +301,7 @@
     <string name="color_default">Default</string>
 
     <!-- Status bar -->
-    <string name="status_bar_title">Status bar</string>
+    <string name="status_bar_title">Status bar &amp; extras</string>
     <string name="status_bar_style_title">Style</string>
     <string name="status_bar_settings">Status bar settings</string>
 
@@ -403,33 +415,6 @@
     <string name="navigation_bar_size_40_dp">40 dp</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (off)</string>
-
-    <!-- ListView animation -->
-    <string name="interface_settings_animation_title">Animation options</string>
-    <string name="listview_animation_title">ListView animation</string>
-    <string name="listview_off">Default</string>
-    <string name="listview_wave_left">Wave (left)</string>
-    <string name="listview_wave_right">Wave (right)</string>
-    <string name="listview_alpha">Alpha</string>
-    <string name="listview_scale">Scale</string>
-    <string name="listview_stack_top">Stack (top)</string>
-    <string name="listview_stack_bottom">Stack (bottom)</string>
-    <string name="listview_unfold">Unfold</string>
-    <string name="listview_fold">Fold</string>
-    <string name="listview_translate_left">Translate (left)</string>
-    <string name="listview_translate_right">Translate (right)</string>
-
-    <!-- ListView interpolator -->
-    <string name="listview_interpolator_title">ListView interpolator</string>
-    <string name="listview_accelerate_interpolator">Accelerate</string>
-    <string name="listview_decelerate_interpolator">Decelerate</string>
-    <string name="listview_accelerate_decelerate_interpolator">Accelerate and decelerate</string>
-    <string name="listview_anticipate_interpolator">Anticipate</string>
-    <string name="listview_overshoot_interpolator">Overshoot</string>
-    <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
-    <string name="listview_bounce_interpolator">Bounce</string>
-    <string name="listview_cycle_interpolator">Cycle</string>
-    <string name="listview_linear_interpolator">Linear</string>
 
      <!-- QuickSettings: Smart Pulldown -->
     <string name="smart_pulldown_title">Smart pulldown</string>
@@ -752,5 +737,87 @@ sword is entered</string>
     <string name="select_custom_app_title">Select custom app</string>
     <string name="select_custom_activity_title">Select custom activity</string>
     <string name="profile_applist_title">Applications</string>
+
+    <!-- Bluetooth additions -->
+    <!-- Bluetooth accept all Filestypes -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
+
+    <!-- App Circle sidebar -->
+    <string name="category_app_circle_bar_title">App launcher</string>
+    <string name="app_circle_bar_title">App circle bar</string>
+    <string name="app_circle_bar_summary">Show circle app launcher after touching right side of screen</string>
+    <string name="app_circle_bar_included_apps_title">Included apps</string>
+    <string name="app_circle_bar_included_apps_summary">Apps will show in app circle bar</string>
+    <string name="trigger_width_title">Trigger width</string>
+    <string name="trigger_width_summary">Adjust the width of the trigger area</string>
+    <string name="trigger_top_title">Trigger position</string>
+    <string name="trigger_top_summary">Adjust the vertical postion of the trigger area</string>
+    <string name="trigger_bottom_title">Trigger height</string>
+    <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
+
+    <!-- Viper4Android -->
+    <string name="viper_title">Viper4Android</string>
+
+    <!-- ListView animation -->
+    <string name="interface_settings_animation_title">Animation options</string>
+    <string name="listview_animation_title">ListView animation</string>
+    <string name="listview_off">Default</string>
+    <string name="listview_wave_left">Wave (left)</string>
+    <string name="listview_wave_right">Wave (right)</string>
+    <string name="listview_alpha">Alpha</string>
+    <string name="listview_scale">Scale</string>
+    <string name="listview_stack_top">Stack (top)</string>
+    <string name="listview_stack_bottom">Stack (bottom)</string>
+    <string name="listview_unfold">Unfold</string>
+    <string name="listview_fold">Fold</string>
+    <string name="listview_translate_left">Translate (left)</string>
+    <string name="listview_translate_right">Translate (right)</string>
+
+    <!-- ListView interpolator -->
+    <string name="listview_interpolator_title">ListView interpolator</string>
+    <string name="listview_accelerate_interpolator">Accelerate</string>
+    <string name="listview_decelerate_interpolator">Decelerate</string>
+    <string name="listview_accelerate_decelerate_interpolator">Accelerate and decelerate</string>
+    <string name="listview_anticipate_interpolator">Anticipate</string>
+    <string name="listview_overshoot_interpolator">Overshoot</string>
+    <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
+    <string name="listview_bounce_interpolator">Bounce</string>
+    <string name="listview_cycle_interpolator">Cycle</string>
+    <string name="listview_linear_interpolator">Linear</string>
+
+    <!-- Volume Steps -->
+    <string name="volume_steps_title">Volume Steps</string>
+    <string name="volume_steps_60">60</string>
+    <string name="volume_steps_45">45</string>
+    <string name="volume_steps_30">30</string>
+    <string name="volume_steps_15">15</string>
+    <string name="volume_steps_7">7</string>
+    <string name="volume_steps_5">5</string>
+    <string name="volume_steps_alarm_title">Alarm</string>
+    <string name="volume_steps_dtmf_title">DTMF</string>
+    <string name="volume_steps_music_title">Music</string>
+    <string name="volume_steps_notification_title">Notification</string>
+    <string name="volume_steps_ring_title">Ringer</string>
+    <string name="volume_steps_system_title">System</string>
+    <string name="volume_steps_voice_call_title">Voice Call</string>
+
+    <!-- AOKP custom system animations -->  
+    <string name="aokp_animation_title">System animations</string>
+    <string name="aokp_animation_summary">AOKP custom animation</string>
+    <string name="activity_open_title">Activity open animation</string>
+    <string name="activity_close_title">Activity close animation</string>
+    <string name="task_open_title">Task open animation</string>
+    <string name="task_close_title">Task close animation</string>
+    <string name="task_move_to_front_title">Move to front animation</string>
+    <string name="task_move_to_back_title">Move to back animation</string>
+    <string name="wallpaper_open_title">Wallpaper open animation</string>
+    <string name="wallpaper_close_title">Wallpaper close animation</string>
+    <string name="wallpaper_intra_open_title">Wallpaper intra open animation</string>
+    <string name="wallpaper_intra_close_title">Wallpaper intra close animation</string>
+    <string name="task_open_behind_title">Task open behind animation</string>
+    <string name="animation_duration_title">Animation duration</string>
+    <string name="title_animation_no_override">Prevent app overrides</string>
+    <string name="summary_animation_no_override">Prevent apps from overriding transitions</string>
+    <string name="animation_duration_default">Default</string>
 
 </resources>

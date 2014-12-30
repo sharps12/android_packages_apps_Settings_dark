@@ -163,6 +163,7 @@
     <string name="button_pref_title">Buttons</string>
     <string name="hardware_keys_power_key_title">Power button</string>
     <string name="hardware_keys_home_key_title">Home button</string>
+    <string name="hardware_keys_back_key_title">Back button</string>
     <string name="hardware_keys_menu_key_title">Menu button</string>
     <string name="hardware_keys_appswitch_key_title">Recents button</string>
     <string name="hardware_keys_volume_keys_title">Volume buttons</string>
@@ -178,14 +179,13 @@
     <string name="hardware_keys_action_launch_camera">Launch camera</string>
     <string name="hardware_keys_action_sleep">Turn screen off</string>
     <string name="hardware_keys_action_last_app">Last app</string>
-    <string name="button_wake_title">Wake up</string>
-    <string name="home_wake_summary">Pressing the home button will wake your device</string>
+    <string name="swap_volume_buttons_title">Reorient</string>
+    <string name="swap_volume_buttons_summary">Swap volume buttons when the screen is rotated</string>
     <string name="power_end_call_title">End call</string>
     <string name="power_end_call_summary">Pressing the power button will end the current call</string>
+    <string name="button_wake_title">Wake up device</string>
     <string name="home_answer_call_title">Answer call</string>
     <string name="home_answer_call_summary">Pressing the home button will answer the current incoming call</string>
-    <string name="volbtn_wake_device_title">Wake up device</string>
-    <string name="volbtn_wake_device_summary">Pressing either volume button will wake your device</string>
 
     <!-- Backlight brightness settings screen -->
     <string name="adaptive_backlight_title">Adaptive backlight</string>
@@ -275,6 +275,7 @@
     <!-- About phone screen, CyanogenMod version -->
     <string name="mod_version">CyanogenMod version</string>
     <string name="mod_version_default">Unknown</string>
+    <string name="model_name">Model name</string>
 
     <!-- About phone screen, build date -->
     <string name="build_date">Build date</string>
@@ -355,10 +356,15 @@
     <string name="kill_app_longpress_back">Kill app back button</string>
     <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back button</string>
 
-    <string name="header_category_personalization">LolliGang</string>
+    <string name="header_category_personalization">The Lab</string>
+
+    <!-- Navigation Bar -->
+    <string name="navigation_bar_category">Navigation bar</string>
+    <string name="navigation_bar_left_title">Left-handed mode</string>
+    <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
 
     <!-- Status bar -->
-    <string name="status_bar_title">Status bar</string>
+    <string name="status_bar_title">Status bar &amp; customs</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
     <string name="status_bar_quick_qs_pulldown_title">Quick pulldown</string>
@@ -572,6 +578,13 @@
 
     <string name="ok">OK</string>
 
+    <!-- Wifi connection notifications -->
+    <string name="wifi_notify_changed_networks">Wi\u2011Fi connected notification</string>
+    <string name="notify_changed_networks_default">Off (default)</string>
+    <string name="notify_changed_networks_toast">Toast</string>
+    <string name="notify_changed_networks_notification">Notification</string>
+    <string name="notify_changed_networks_notification_sound">Notification with sound</string>
+
     <!-- Profiles -->
     <string name="profile_menu_delete_title">Delete</string>
     <string name="profile_menu_triggers_title">Modify triggers</string>
@@ -637,6 +650,23 @@
     <string name="gamma_tuning_contrast">Contrast</string>
     <string name="gamma_tuning_brightness">Brightness</string>
     <string name="gamma_tuning_saturation">Saturation</string>
+
+    <!-- Display settings.  Screen color. -->
+    <string name="screencolor">Screen color</string>
+    <string name="screencolor_summary">Tune screen Hue, Saturation, Contrast and Intensity</string>
+    <string name="custom_screencolor">Custom screen color</string>
+    <string name="screencolor_save">Save</string>
+    <string name="screencolor_cancel">Cancel</string>
+    <string name="previous_str">Previous</string>
+    <string name="new_str">New</string>
+    <string name="restore_preview">View default picture</string>
+    <string name="selectnewfile_menu">View new picture from Gallery</string>
+    <string name="selectfile_menu">View picture from Gallery</string>
+    <string name="restore_default_str">Reset</string>
+    <string name="hue_str">Hue: <xliff:g id="hue_value">%1$s</xliff:g></string>
+    <string name="saturation_str">Saturation: <xliff:g id="saturation_value">%1$s</xliff:g></string>
+    <string name="contrast_str">Contrast: <xliff:g id="contrast_value">%1$s</xliff:g></string>
+    <string name="intensity_str">Intensity: <xliff:g id="intensity_str_value">%1$s</xliff:g></string>
 
     <string name="settings_reset_button">Reset</string>
 
@@ -791,5 +821,19 @@
     <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
     <string name="protected_apps">Protected apps</string>
     <string name="saving_protected_components">Saving component state</string>
+
+    <!-- Category title for Charging sounds (Power state change) specific Settings.
+         [CHAR LIMIT=40] -->
+    <string name="power_notifications_category_title">Charging sounds</string>
+
+    <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
+    <string name="power_notifications_enable_title">Enable</string>
+    <string name="power_notifications_enable_summary">Play a sound when connecting or disconnecting the charger</string>
+    <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
+    <string name="power_notifications_vibrate_title">Vibrate</string>
+    <!-- Sound settings, Charging sounds ringtone selection, preference label -->
+    <string name="power_notifications_ringtone_title">Notification sound</string>
+    <!-- Sound settings, charging sounds label for ringtone == none -->
+    <string name="power_notifications_ringtone_silent">Silent</string>
 
 </resources>

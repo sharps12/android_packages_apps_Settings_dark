@@ -1203,19 +1203,9 @@ public class SettingsActivity extends Activity
                     if (!hasPrintingSupport) {
                         removeTile = true;
                     }
-                } else if (id == R.id.superuser_settings) {
-                    if (!DevelopmentSettings.isRootForAppsEnabled()) {
-                        removeTile = true;
-                    }
                 } else if (id == R.id.development_settings) {
                     if (!showDev || um.hasUserRestriction(
                             UserManager.DISALLOW_DEBUGGING_FEATURES)) {
-                        removeTile = true;
-                    }
-                } else if (id == R.id.button_settings) {
-                    boolean hasDeviceKeys = getResources().getInteger(
-                            com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
-                    if (!hasDeviceKeys) {
                         removeTile = true;
                     }
                 } else if (id == R.id.supersu_settings) {
@@ -1224,6 +1214,17 @@ public class SettingsActivity extends Activity
                     try {
                         supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
                     } catch (PackageManager.NameNotFoundException e) {
+                    }
+                    if (!supported) {
+                        removeTile = true;
+                    }
+                } else if (id == R.id.viper_settings) {
+                    // Embedding into Settings only if app exists (user could manually remove it)
+                    boolean supported = false;
+                    try {
+                        supported = (getPackageManager().getPackageInfo("com.vipercn.viper4android_v2", 0).versionCode >= 18);
+                    } catch (PackageManager.NameNotFoundException e) {
+ 
                     }
                     if (!supported) {
                         removeTile = true;

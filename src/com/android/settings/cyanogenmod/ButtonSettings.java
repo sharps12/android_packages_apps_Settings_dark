@@ -57,15 +57,17 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final String KEY_MENU_LONG_PRESS = "hardware_keys_menu_long_press";
     private static final String KEY_ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEY_ENABLE_HW_KEYS = "enable_hw_keys";
+    private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String KEY_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
-    private static final String KEY_VOLUME_WAKE_DEVICE = "volume_key_wake_device";
+    private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
     private static final String KEY_POWER_END_CALL = "power_end_call";
     private static final String KEY_HOME_ANSWER_CALL = "home_answer_call";
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
 
     private static final String CATEGORY_POWER = "power_key";
     private static final String CATEGORY_HOME = "home_key";
+    private static final String CATEGORY_BACK = "back_key";
     private static final String CATEGORY_MENU = "menu_key";
     private static final String CATEGORY_ASSIST = "assist_key";
     private static final String CATEGORY_APPSWITCH = "app_switch_key";
@@ -96,6 +98,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     public static final int KEY_MASK_ASSIST = 0x08;
     public static final int KEY_MASK_APP_SWITCH = 0x10;
     public static final int KEY_MASK_CAMERA = 0x20;
+    public static final int KEY_MASK_VOLUME = 0x40;
 
     private ListPreference mHomeLongPressAction;
     private ListPreference mHomeDoubleTapAction;
@@ -103,11 +106,12 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mMenuLongPressAction;
     private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mEnableHwKeys;
+    private SwitchPreference mNavigationBarLeftPref;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
+    private SwitchPreference mSwapVolumeButtons;
     private SwitchPreference mPowerEndCall;
     private SwitchPreference mHomeAnswerCall;
-    private CheckBoxPreference mVolumeKeyWakeControl;
 
     private Handler mHandler;
 
@@ -123,18 +127,29 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         final int deviceKeys = getResources().getInteger(
                 com.android.internal.R.integer.config_deviceHardwareKeys);
+        final int deviceWakeKeys = getResources().getInteger(
+                com.android.internal.R.integer.config_deviceHardwareWakeKeys);
 
         final boolean hasPowerKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_POWER);
         final boolean hasHomeKey = (deviceKeys & KEY_MASK_HOME) != 0;
+        final boolean hasBackKey = (deviceKeys & KEY_MASK_BACK) != 0;
         final boolean hasMenuKey = (deviceKeys & KEY_MASK_MENU) != 0;
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitchKey = (deviceKeys & KEY_MASK_APP_SWITCH) != 0;
+        final boolean hasVolumeKeys = (deviceKeys & KEY_MASK_VOLUME) != 0;
+
+        final boolean showHomeWake = (deviceWakeKeys & KEY_MASK_HOME) != 0;
+        final boolean showBackWake = (deviceWakeKeys & KEY_MASK_BACK) != 0;
+        final boolean showMenuWake = (deviceWakeKeys & KEY_MASK_MENU) != 0;
+        final boolean showVolumeWake = (deviceWakeKeys & KEY_MASK_VOLUME) != 0;
 
         boolean hasAnyBindableKey = false;
         final PreferenceCategory powerCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_POWER);
         final PreferenceCategory homeCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_HOME);
+        final PreferenceCategory backCategory =
+                (PreferenceCategory) prefScreen.findPreference(CATEGORY_BACK);
         final PreferenceCategory menuCategory =
                 (PreferenceCategory) prefScreen.findPreference(CATEGORY_MENU);
         final PreferenceCategory appSwitchCategory =
@@ -175,17 +190,21 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(hwKeysPref);
         }
 
+        // Navigation bar left
+        mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
+
         if (hasPowerKey) {
             if (!Utils.isVoiceCapable(getActivity())) {
                 powerCategory.removePreference(mPowerEndCall);
                 mPowerEndCall = null;
+                prefScreen.removePreference(powerCategory);
             }
         } else {
             prefScreen.removePreference(powerCategory);
         }
 
         if (hasHomeKey) {
-            if (!res.getBoolean(R.bool.config_show_homeWake)) {
+            if (!showHomeWake) {
                 homeCategory.removePreference(findPreference(Settings.System.HOME_WAKE_SCREEN));
             }
 
@@ -223,7 +242,20 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(homeCategory);
         }
 
+        if (hasBackKey) {
+            if (!showBackWake) {
+                backCategory.removePreference(findPreference(Settings.System.BACK_WAKE_SCREEN));
+                prefScreen.removePreference(backCategory);
+            }
+        } else {
+            prefScreen.removePreference(backCategory);
+        }
+
         if (hasMenuKey) {
+            if (!showMenuWake) {
+                menuCategory.removePreference(findPreference(Settings.System.MENU_WAKE_SCREEN));
+            }
+
             int pressAction = Settings.System.getInt(resolver,
                     Settings.System.KEY_MENU_ACTION, ACTION_MENU);
             mMenuPressAction = initActionList(KEY_MENU_PRESS, pressAction);
@@ -253,9 +285,15 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         }
 
         if (Utils.hasVolumeRocker(getActivity())) {
-            int wakeControlAction = Settings.System.getInt(resolver,
-                    Settings.System.VOLUME_WAKE_SCREEN, 0);
-            mVolumeKeyWakeControl = initCheckBox(KEY_VOLUME_WAKE_DEVICE, (wakeControlAction == 1));
+            if (!showVolumeWake) {
+                volumeCategory.removePreference(findPreference(Settings.System.VOLUME_WAKE_SCREEN));
+            }
+
+            int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+            mSwapVolumeButtons = (SwitchPreference)
+                    prefScreen.findPreference(KEY_SWAP_VOLUME_BUTTONS);
+            mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
         } else {
             prefScreen.removePreference(volumeCategory);
         }
@@ -295,22 +333,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             mHomeAnswerCall.setChecked(homeButtonAnswersCall);
         }
 
-    }
-
-    private CheckBoxPreference initCheckBox(String key, boolean checked) {
-        CheckBoxPreference checkBoxPreference = (CheckBoxPreference) getPreferenceManager()
-                .findPreference(key);
-        if (checkBoxPreference != null) {
-            checkBoxPreference.setChecked(checked);
-            checkBoxPreference.setOnPreferenceChangeListener(this);
-        }
-        return checkBoxPreference;
-    }
-
-    private void handleCheckBoxChange(CheckBoxPreference pref, Object newValue, String setting) {
-        Boolean value = (Boolean) newValue;
-        int intValue = (value) ? 1 : 0;
-        Settings.System.putInt(getContentResolver(), setting, intValue);
     }
 
     private ListPreference initActionList(String key, int value) {
@@ -379,17 +401,18 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             handleActionListChange(mAppSwitchLongPressAction, newValue,
                     Settings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION);
             return true;
-        } else if (preference == mVolumeKeyWakeControl) {
-            handleCheckBoxChange(mVolumeKeyWakeControl, newValue,
-                    Settings.System.VOLUME_WAKE_SCREEN);
-            return true;
         }
         return false;
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mPowerEndCall) {
+        if (preference == mSwapVolumeButtons) {
+            int value = mSwapVolumeButtons.isChecked()
+                    ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
+        } else if (preference == mPowerEndCall) {
             handleTogglePowerButtonEndsCallPreferenceClick();
             return true;
         } else if (preference == mHomeAnswerCall) {
@@ -408,7 +431,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         Settings.System.putInt(context.getContentResolver(),
                 Settings.System.ENABLE_HW_KEYS, enabled ? 1 : 0);
 
-        if (KeyDisabler.isSupported()) {
+        if (isKeyDisablerSupported()) {
             KeyDisabler.setActive(!enabled);
         }
 
@@ -473,15 +496,27 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         if (appSwitchCategory != null) {
             appSwitchCategory.setEnabled(enabled);
         }
+        if (mNavigationBarLeftPref != null) {
+            mNavigationBarLeftPref.setEnabled(enabled);
+        }
     }
 
     public static void restoreKeyDisabler(Context context) {
-        if (!KeyDisabler.isSupported()) {
+        if (!isKeyDisablerSupported()) {
             return;
         }
 
         writeDisableHwKeysOption(context, Settings.System.getInt(context.getContentResolver(),
                 Settings.System.ENABLE_HW_KEYS, 1) == 1);
+    }
+
+    private static boolean isKeyDisablerSupported() {
+        try {
+            return KeyDisabler.isSupported();
+        } catch (NoClassDefFoundError e) {
+            // Hardware abstraction framework not installed
+            return false;
+        }
     }
 
     private void handleTogglePowerButtonEndsCallPreferenceClick() {

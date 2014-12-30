@@ -1,4 +1,3 @@
-
 package com.android.settings.util;
 
 import android.content.Context;

@@ -85,22 +85,6 @@
         android:name="android.permission.REPORT_SUPERUSER"
         android:protectionLevel="signature" />
 
-    <permission-group
-        android:name="android.permission-group.SUPERUSER"
-        android:description="@string/superuser_description_more"
-        android:icon="@drawable/ic_action_permission"
-        android:label="@string/superuser"
-        android:priority="10000" />
-
-    <permission
-        android:name="android.permission.ACCESS_SUPERUSER"
-        android:description="@string/superuser_description_more"
-        android:icon="@drawable/ic_action_permission"
-        android:label="@string/superuser_description"
-        android:logo="@drawable/ic_action_permission"
-        android:permissionGroup="android.permission-group.SUPERUSER"
-        android:protectionLevel="dangerous" />
-
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
             android:taskAffinity=""
@@ -152,6 +136,16 @@
         <receiver
             android:name=".cyanogenmod.superuser.SuReceiver"
             android:permission="android.permission.REPORT_SUPERUSER" />
+
+        <!-- Screen color Settings Controls -->
+        <activity android:name=".ScreenColorSettings" android:label="@string/screencolor"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="nosensor">
+        </activity>
+        <activity android:name=".CustomScreenColor" android:label="@string/custom_screencolor"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="nosensor">
+        </activity>
 
         <!-- Settings -->
         <uses-library android:name="org.cyanogenmod.hardware"
@@ -386,12 +380,6 @@
                 android:value="true" />
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                        android:value="com.android.settings.ApnSettings" />
-        </activity>
-
-        <activity android:name=".SubSettings$BluetoothSubSettings"
-                android:taskAffinity="com.android.settings"
-                android:configChanges="orientation|keyboardHidden|screenSize"
-                android:parentActivityName="Settings">
         </activity>
 
         <activity android:name="Settings$BluetoothSettingsActivity"
@@ -2179,6 +2167,24 @@
             </intent-filter>$
         </receiver>
 
+        <!-- Aicp Extras -->
+        <activity android:name="Settings$AicpSettingsActivity"
+            android:label="@string/aicp_settings_title"
+            android:taskAffinity="">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.aicp.AicpSettings" />
+        </activity>
+
+        <activity
+             android:name=".aicp.AicpSettings" />
+
+        <activity android:name=".aicp.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".aicp.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+
         <!-- Watch for ContactsContract.Profile changes and update the user's photo.  -->
         <receiver android:name=".users.ProfileUpdateReceiver">
             <intent-filter>
@@ -2209,24 +2215,6 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/sim_settings" />
         </activity>
-
-        <!-- Aicp Extras -->
-        <activity android:name="Settings$AicpSettingsActivity"
-            android:label="@string/aicp_settings_title"
-            android:taskAffinity="">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.aicp.AicpSettings" />
-        </activity>
-
-        <activity
-             android:name=".aicp.AicpSettings" />
-
-        <activity android:name=".aicp.gestureanywhere.GestureAnywhereBuilderActivity" />
-        <activity android:name=".aicp.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
         <provider
             android:name=".search.SettingsSearchIndexablesProvider"
@@ -2269,7 +2257,7 @@
 
         <receiver android:name="com.android.settings.aicp.hfm.IntentReceiver" >
             <intent-filter>
-                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 

@@ -18,19 +18,63 @@
         android:title="@string/various_shit_title"
         android:key="various_shit_screen">
 
+    <PreferenceScreen
+        android:key="lock_clock_clock_section"
+        android:title="@string/lock_clock_clock_section_title"
+        android:summary="@string/lock_clock_clock_section_summary" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
+            android:targetPackage="com.cyanogenmod.lockclock" >
+            <extra android:name=":android:show_fragment"
+                android:value="com.cyanogenmod.lockclock.preference.ClockPreferences" />
+        </intent>
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:key="lock_clock_weather_section"
+        android:title="@string/lock_clock_weather_section_title"
+        android:summary="@string/lock_clock_weather_section_summary" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
+            android:targetPackage="com.cyanogenmod.lockclock" >
+            <extra android:name=":android:show_fragment"
+                android:value="com.cyanogenmod.lockclock.preference.WeatherPreferences" />
+        </intent>
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:key="lock_clock_calendar_section"
+        android:title="@string/lock_clock_calendar_section_title"
+        android:summary="@string/lock_clock_calendar_section_summary" >
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="com.cyanogenmod.lockclock.preference.Preferences"
+            android:targetPackage="com.cyanogenmod.lockclock" >
+            <extra android:name=":android:show_fragment"
+                android:value="com.cyanogenmod.lockclock.preference.CalendarPreferences" />
+        </intent>
+    </PreferenceScreen>
+
     <!-- Wakelock blocker -->
     <PreferenceScreen
         android:key="wakelock_blocker"
         android:fragment="com.android.settings.temasek.WakeLockBlocker"
         android:title="@string/wakelock_blocker_title" />
 
-    <PreferenceScreen
-        android:key="lock_clock"
-        android:title="@string/lock_clock_title"
-        android:summary="@string/lock_clock_summary">
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.cyanogenmod.lockclock"
-            android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
-        </PreferenceScreen> 
+    <!-- Joke -->
+    <Preference
+        android:key="hidden_shit"
+        android:title="\n \n" />
+
+    <SwitchPreference
+        android:key="hidden_shit_unlocked"
+        android:title="@string/hidden_shit_title"
+        android:summary="@string/hidden_shit_summary" />
+
+    <PreferenceScreen android:key="hidden_img"
+        android:enabled="true"
+        android:layout="@layout/aicp_hidden_img" />
 
 </PreferenceScreen>

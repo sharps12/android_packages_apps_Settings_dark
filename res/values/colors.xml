@@ -17,10 +17,12 @@
 <resources>
     <color name="black">#000</color>
     <color name="red">#F00</color>
+    <color name="white">#FFF</color>
 
     <color name="material_empty_color_light">#FFCED7DB</color>
     <color name="actionbar_icon_color">#ffffff</color>
 
+    <color name="background_tab_pressed">#00252525</color>
     <color name="memory_used">#F00</color>
     <color name="memory_avail">@color/material_empty_color_light</color>
     <color name="memory_apps_usage">#77831A</color>
@@ -31,12 +33,10 @@
     <color name="memory_misc">#7C3030</color>
     <color name="memory_user_light">#479392</color>
     <color name="memory_user_dark">#316665</color>
-
     <color name="crypt_keeper_clock_background">#ff9a9a9a</color>
     <color name="crypt_keeper_clock_foreground">#ff666666</color>
     <color name="crypt_keeper_clock_am_pm">#ff9a9a9a</color>
     <color name="crypt_keeper_password_background">#70606060</color>
-
     <color name="divider_color">#20ffffff</color>
     <color name="title_color">@android:color/holo_blue_light</color>
     <color name="setup_divider_color_dark">#33ffffff</color>

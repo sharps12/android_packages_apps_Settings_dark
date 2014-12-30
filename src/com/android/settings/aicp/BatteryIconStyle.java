@@ -16,6 +16,7 @@
 
 package com.android.settings.aicp;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.app.AlertDialog;
@@ -97,6 +98,9 @@ public class BatteryIconStyle extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.aicp_battery_style);
         prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setIcon(R.drawable.ic_settings_aicp);
 
         int intColor;
         String hexColor;

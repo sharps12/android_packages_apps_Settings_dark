@@ -15,6 +15,7 @@
 */
 package com.android.settings.aicp;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.content.ContentResolver;
@@ -48,6 +49,9 @@ public class Recents extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setIcon(R.drawable.ic_settings_aicp);
 
         mRecentsClearAll = (SwitchPreference) prefSet.findPreference(SHOW_CLEAR_ALL_RECENTS);
         mRecentsClearAll.setChecked(Settings.System.getIntForUser(resolver,
